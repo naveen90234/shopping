@@ -13,6 +13,14 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 - Step5: [K8s Installation on CentOS 7](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#k8s-installation)
 - Step6: [Argocd Installation on K8s](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#argocd-installation)
 
+## Configuration Steps
+#### Jenkins Configuration
+- Jenkins Login
+- Jenkins plugins installations
+- Tools Configuration
+#### SonarQube Configuration
+- Create Token
+- Create Webhook
 
 ## Jenkins Installation
 
