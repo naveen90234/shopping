@@ -1,9 +1,10 @@
+
 # Shopping App with DevSecOps
 
 In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s And Argocd
 
 
-![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/Jenkins_pipeline.png)
+![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/Jenkins_pipeline.jpeg?token=GHSAT0AAAAAACNDEGPZ5ISEYUX3IKVB2DOKZNK35HA)
 ## Installation Steps
 
 - Step1: [Jenkins Installation on CentOS 7](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#jenkins-installation)
@@ -13,7 +14,6 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 - Step5: [K8s Installation on CentOS 7](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#k8s-installation)
 - Step6: [Argocd Installation on K8s](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#argocd-installation)
 - Step7: [Prometheus Grafana Installation on K8s](https://github.com/jeetu844/Shopping-reactJS-DevOps#prometheus-grafana-installation-on-k8s)
-
 ## Configuration Steps
 #### Jenkins Configuration
 - [Jenkins Login](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#lets-jenkins-configuration)
@@ -22,7 +22,6 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 #### SonarQube Configuration
 - Create Token
 - Create Webhook
-
 
 ## Jenkins Installation
 
@@ -180,7 +179,6 @@ kubectl edit svc stable-grafana -n prometheus
 ```bash
 kubectl get svc -n prometheus
 ```
-
 ### Let's Jenkins Configuration
 ![Jenkins login password](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/LoginPage.jpeg)
 
@@ -197,6 +195,10 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 
 ![Jenkins NodeJS Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/NodeJS-plugin.jpeg)
 
+![OWASP Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/owasp.jpeg)
+
+![Docker Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/docker.jpeg)
 ## Authors
 
 - [@Jitendra Sharma](https://www.github.com/jeetu844)
+  
