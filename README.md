@@ -190,6 +190,12 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 - Eclipse Temurin Installer (Install without restart)
 - SonarQube Scanner (Install without restart)
 - NodeJs Plugin (Install Without restart)
+- OWASP Dependency-Check
+- Docker
+- Docker Commons
+- Docker Pipeline
+- Docker API
+- docker-build-step
 
 ![Jenkins JDK Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/JDK-plugin.jpeg)
 
