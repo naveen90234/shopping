@@ -138,6 +138,46 @@ export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jso
 ```bash
 echo $ARGO_PWD
 ```
+## Prometheus Grafana Installation on K8s
+Prometheus Grafana Installation on K8s using helm
+```bash
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+```
+- See the Helm version
+```bashh
+helm version --client
+```
+```bash
+helm repo add stable https://charts.helm.sh/stable
+```
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+```
+```bash
+kubectl create namespace prometheus
+```
+```bash
+helm install stable prometheus-community/kube-prometheus-stack -n prometheus
+```
+```bash
+kubectl get pods -n prometheus
+```
+```bash
+kubectl get svc -n prometheus
+```
+To make Prometheus and grafana available outside the cluster, use LoadBalancer or NodePort instead of ClusterIP.
+```bash
+kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus
+```
+![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/k8s-prometheus.jpeg)
+```bash
+kubectl edit svc stable-grafana -n prometheus
+```
+```bash
+kubectl get svc -n prometheus
+```
 ## Authors
 
 - [@Jitendra Sharma](https://www.github.com/jeetu844)
