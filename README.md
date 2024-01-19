@@ -16,12 +16,13 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 
 ## Configuration Steps
 #### Jenkins Configuration
-- Jenkins Login
-- Jenkins plugins installations
+- [Jenkins Login](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#lets-jenkins-configuration)
+- [Jenkins plugins installations](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#jenkins-plugins-installations)
 - Tools Configuration
 #### SonarQube Configuration
 - Create Token
 - Create Webhook
+
 
 ## Jenkins Installation
 
