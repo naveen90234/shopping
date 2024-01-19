@@ -6,12 +6,12 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 ![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/Jenkins_pipeline.jpeg)
 ## Installation Steps
 
-- Step1: Jenkins Installation on CentOS 7
-- Step2: Docker Installation on CentOS 7
-- Step3: SonarQube Installation using Docker Image
-- Step4: Trivy Installation on CentOS 7
-- Step5: K8s Installation on CentOS 7
-- Step6: Argocd Installation on K8s
+- Step1: [Jenkins Installation on CentOS 7](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#jenkins-installation)
+- Step2: [Docker Installation on CentOS 7](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#docker-installation)
+- Step3: [SonarQube Installation using Docker Image](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#sonarqube-installation)
+- Step4: [Trivy Installation on CentOS 7](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#trivy-installation)
+- Step5: [K8s Installation on CentOS 7](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#k8s-installation)
+- Step6: [Argocd Installation on K8s](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#argocd-installation)
 
 
 ## Jenkins Installation
