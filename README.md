@@ -195,7 +195,7 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 - Docker Commons
 - Docker Pipeline
 - Docker API
-- docker-build-step
+- Docker-build-step
 
 ![Jenkins JDK Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/JDK-plugin.jpeg)
 
