@@ -3,7 +3,7 @@
 In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s And Argocd
 
 
-![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/Jenkins_pipeline.jpeg?token=GHSAT0AAAAAACNDEGPZ5ISEYUX3IKVB2DOKZNK35HA)
+![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/Jenkins_pipeline.jpeg)
 ## Installation Steps
 
 - Step1: Jenkins Installation on CentOS 7
