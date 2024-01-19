@@ -179,6 +179,23 @@ kubectl edit svc stable-grafana -n prometheus
 ```bash
 kubectl get svc -n prometheus
 ```
+
+### Let's Jenkins Configuration
+![Jenkins login password](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/LoginPage.jpeg)
+
+For get Administrator password
+```bash
+cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+#### Jenkins plugins installations
+- Eclipse Temurin Installer (Install without restart)
+- SonarQube Scanner (Install without restart)
+- NodeJs Plugin (Install Without restart)
+
+![Jenkins JDK Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/JDK-plugin.jpeg)
+
+![Jenkins NodeJS Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/NodeJS-plugin.jpeg)
+
 ## Authors
 
 - [@Jitendra Sharma](https://www.github.com/jeetu844)
