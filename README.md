@@ -23,6 +23,7 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 - [Create Token](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#create-sonarqube-token)
 - [Create Webhook](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#create-sonarqube-webhook)
 - [Jenkins Sonaqube Integration](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#jenkins-sonaqube-integration)
+- Sonarqube ReactJS Project
 
 ## Jenkins Installation
 
@@ -300,6 +301,27 @@ Goto Manage Jenkins -> Tools
   - Server authentication token "sonar-token"
 - Apply & Save
 ![jenkins-int-step-4](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/jenkins-int-step-4.png)
+
+### ReactJS Sonaqube Project
+- Goto Sonarqube Projects
+![project-step-1](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/project-step-1.png)
+- Click on "Manually"
+![project-step-2](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/project-step-2.png)
+  - Project display name "shopping"
+  - Project key "shopping"
+  - Main branch name "main"
+  - Clink on "Set Up"
+![project-step-3](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/project-step-3.png)
+- Click on "Locally"
+![project-step-4](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/project-step-4.png)
+- Select "Use existing token"
+  - Paste SonarToken
+  - Click on "Continue"
+![project-step-5](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/project-step-5.png)
+- Click on "Other (for JS, TS, Go, Python, PHP, ...)"
+  - Click on "Linux"
+![project-step-6](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/project-step-6.png)
+
 ## Authors
 
 - [@Jitendra Sharma](https://www.linkedin.com/in/jitendra-kumar-sharma-0b662751/)
