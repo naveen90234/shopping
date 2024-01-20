@@ -8,7 +8,7 @@ pipeline {
         SCANNER_HOME=tool 'sonar-scanner'
     }
     stages {
-        stage('Pull Sourc') {
+        stage('Pull Source') {
             steps {
                 cleanWs()
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-DevOps.git'
