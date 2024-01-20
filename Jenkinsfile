@@ -7,6 +7,8 @@ pipeline {
     environment{
         SCANNER_HOME=tool 'sonar-scanner'
         Version="${env.BUILD_ID}"
+        GithubUser="jeetu844"
+        GithubRepo="Shopping-reactJS-DevOps"
     }
     stages {
         stage('Pull Source') {
@@ -63,6 +65,20 @@ pipeline {
         stage('Trivy Image Scan'){
             steps{
                 sh 'trivy image shopping:$Version > trivyimage.txt'
+            }
+        }
+        stage('Update Manifest'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'github-token', variable: 'gitcred')]) {
+                        sh '''
+                            sed -i 's|image: .*|image: jeetu844/shopping:$Version|g' deployment.yml
+                            git add .
+                            git commit -a -m "Update Manifest with jeetu844/shopping:${Version}"
+                            git push https://$gitcred@github.com/$GithubUser/$GithubRepo HEAD:main
+                        '''
+                    }
+                }
             }
         }
     }
