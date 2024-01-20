@@ -302,5 +302,5 @@ Goto Manage Jenkins -> Tools
 ![jenkins-int-step-4](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/jenkins-int-step-4.png)
 ## Authors
 
-- [@Jitendra Sharma](https://www.github.com/jeetu844)
+- [@Jitendra Sharma](https://www.linkedin.com/in/jitendra-kumar-sharma-0b662751/)
   
