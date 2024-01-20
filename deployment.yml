@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: shoppingc0
-          image: jeetu844/shopping:35
+          image: jeetu844/shopping:36
           ports:
             - containerPort: 3000
 ---
