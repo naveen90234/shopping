@@ -75,8 +75,8 @@ pipeline {
                     withCredentials([string(credentialsId: 'github-token', variable: 'gitcred')]) {
                         sh '''
                             sed -i 's|image: .*|image: jeetu844/shopping:${Version}|g' deployment.yml
-                            git config --global user.email "${MyEmail}"
-                            git config --global user.name "${MyName}"
+                            git config --global user.email '"${MyEmail}"'
+                            git config --global user.name '"${MyName}"'
                             git add .
                             git commit -a -m "Update Manifest with jeetu844/shopping:${Version}"
                             git push https://$gitcred@github.com/$GithubUser/$GithubRepo HEAD:main
