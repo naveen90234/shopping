@@ -18,7 +18,7 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 #### Jenkins Configuration
 - [Jenkins Login](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#lets-jenkins-configuration)
 - [Jenkins plugins installations](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#jenkins-plugins-installations)
-- Tools Configuration
+- [Tools Configuration](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#jenkins-tools-installations)
 #### SonarQube Configuration
 - Create Token
 - Create Webhook
@@ -179,7 +179,7 @@ kubectl edit svc stable-grafana -n prometheus
 ```bash
 kubectl get svc -n prometheus
 ```
-### Let's Jenkins Configuration
+### Let's Jenkins Configure
 ```bash
 <Your Public IP Address:8080>
 ```
@@ -247,6 +247,26 @@ Goto Manage Jenkins -> Tools
   - Select "Download from docker.com"
   - Docker version "latest"
 ![Jenkins Docker Tool](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Jenkins-Docker-Tool.png)
+
+### Let's SonarQube Configure
+```
+<Your Public IP Address:9000>
+```
+- Default Credentials
+  - Username : admin
+  - Password : admin
+#### Create SonarQube Token
+- Click on "Administration"
+![SonarQube Step-1](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/token-step-1.png)
+- Click on "Security"
+- Click on "Users"
+![SonarQube Step-2](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/token-step-2.png)
+- Click on Update Tokens
+![SonarQube Step-3](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/token-step-3.png)
+- Enter Token Name "Jenkins"
+- Click on "Generate"
+- Copy your Token
+![SonarQube Step-4](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/token-step-4.png)
 
 ## Authors
 
