@@ -192,15 +192,18 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 #### Now, install the suggested plugins.
 ![Suggested Plugins](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/suggested-plugins.png)
 #### Jenkins plugins installations
+Goto Manage Jenkins -> Plugins -> Available plugins
 - Eclipse Temurin Installer (Install without restart)
 - SonarQube Scanner (Install without restart)
 - NodeJs Plugin (Install Without restart)
-- OWASP Dependency-Check
-- Docker
-- Docker Commons
-- Docker Pipeline
-- Docker API
-- Docker-build-step
+- OWASP Dependency-Check (Install Without restart)
+- Docker (Install Without restart)
+- Docker Commons (Install Without restart)
+- Docker Pipeline (Install Without restart)
+- Docker API (Install Without restart)
+- Docker-build-step (Install Without restart)
+
+**Restart your Jenkins** ```<Your PublicIP:8080/restart>```
 
 ![Jenkins JDK Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/JDK-plugin.jpeg)
 
