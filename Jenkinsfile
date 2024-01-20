@@ -74,7 +74,7 @@ pipeline {
                 script{
                     withCredentials([string(credentialsId: 'github-token', variable: 'gitcred')]) {
                         sh '''
-                            sed -i 's|image: .*|image: jeetu844/shopping:$Version|g' deployment.yml
+                            sed -i 's|image: .*|image: jeetu844/shopping:${Version}|g' deployment.yml
                             git config --global user.email "${MyEmail}"
                             git config --global user.name "${MyName}"
                             git add .
