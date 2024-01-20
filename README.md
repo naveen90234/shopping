@@ -22,6 +22,7 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 #### SonarQube Configuration
 - [Create Token](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#create-sonarqube-token)
 - [Create Webhook](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#create-sonarqube-webhook)
+- Jenkins Sonaqube Integration
 
 ## Jenkins Installation
 
@@ -280,6 +281,25 @@ Goto Manage Jenkins -> Tools
   - Click on "Create"
 ![SonarQube Webhook Step-4](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/webhook-step-3.png)
 
+### Jenkins Sonaqube Integration
+- Open Jenkins
+- Goto Manage Jenkins -> Credentials
+- Click on "(global)"
+![jenkins-int-step-1](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/jenkins-int-step-1.png)
+- Click on "Add Credentials"
+![jenkins-int-step-2](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/jenkins-int-step-2.png)
+  - Select in Kind "Secret text"
+  - Paste sonarqube token in "Secret"
+  - ID "sonar-token"
+  - Description "sonar-token"
+![jenkins-int-step-3](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/jenkins-int-step-3.png)
+- Goto Manage Jenkins -> System -> SonarQube servers
+- Click on "Add SonarQube"
+  - Name "sonar-server"
+  - Server URL "<http://Sonar Server PublicIP:9000>"
+  - Server authentication token "sonar-token"
+- Apply & Save
+![jenkins-int-step-4](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/jenkins-int-step-4.png)
 ## Authors
 
 - [@Jitendra Sharma](https://www.github.com/jeetu844)
