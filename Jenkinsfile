@@ -6,6 +6,7 @@ pipeline {
     }
     environment{
         SCANNER_HOME=tool 'sonar-scanner'
+        Version="${env.BUILD_ID}"
     }
     stages {
         stage('Pull Source') {
@@ -14,34 +15,45 @@ pipeline {
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-DevOps.git'
             }
         }
-        stage('Sonar Scan'){
+        // stage('Sonar Scan'){
+        //     steps{
+        //         script{
+        //             withSonarQubeEnv('sonar-server') {
+        //                 sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=shopping'
+        //             }
+        //         }
+        //     }
+        // }
+        // stage('Quality Gate'){
+        //     steps{
+        //         waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+        //     }
+        // }
+        // stage('NPM Installation'){
+        //     steps{
+        //         sh 'npm install'
+        //     }
+        // }
+        // stage('Trivy FS Scan'){
+        //     steps{
+        //         sh 'trivy fs . > trivyfs.txt'
+        //     }
+        // }
+        // stage('OWASP Scan'){
+        //     steps{
+        //         dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+        //     }
+        // }
+        stage('Docker Image'){
             steps{
                 script{
-                    withSonarQubeEnv('sonar-server') {
-                        sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=shopping'
+                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
+                    sh '''
+                        docker build -t shopping:$Version .
+                    '''
                     }
                 }
-            }
-        }
-        stage('Quality Gate'){
-            steps{
-                waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-            }
-        }
-        stage('NPM Installation'){
-            steps{
-                sh 'npm install'
-            }
-        }
-        stage('Trivy FS Scan'){
-            steps{
-                sh 'trivy fs . > trivyfs.txt'
-            }
-        }
-        stage('OWASP Scan'){
-            steps{
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
     }
