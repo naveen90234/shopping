@@ -229,9 +229,9 @@ Goto Manage Jenkins -> Tools
 ![Jenkins Sonar Scanner Tool](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Jenkins-SonarTool-installation.png)
 - NodeJS installations
   - Click on "Add NodeJS"
-  - Name "nodejs20"
+  - Name "nodejs16"
   - Click on "Install automatically"
-  - Select "NodeJS 20.11.0"
+  - Select "NodeJS 16.2.0"
 ![Jenkins NodeJS Tool](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Jenkins-NodeJS-Tool.png)
 - Dependency-Check installations
   - Click on "Add Dependency-Check"
