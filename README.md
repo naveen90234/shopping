@@ -203,8 +203,6 @@ Goto Manage Jenkins -> Plugins -> Available plugins
 - Docker API (Install Without restart)
 - Docker-build-step (Install Without restart)
 
-**Restart your Jenkins** ```<Your PublicIP:8080/restart>```
-
 ![Jenkins JDK Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/JDK-plugin.jpeg)
 
 ![Jenkins NodeJS Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/NodeJS-plugin.jpeg)
@@ -212,6 +210,8 @@ Goto Manage Jenkins -> Plugins -> Available plugins
 ![OWASP Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/owasp.jpeg)
 
 ![Docker Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/docker.jpeg)
+
+**Restart your Jenkins** ```<Your PublicIP:8080/restart>```
 ## Authors
 
 - [@Jitendra Sharma](https://www.github.com/jeetu844)
