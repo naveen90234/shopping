@@ -9,6 +9,8 @@ pipeline {
         Version="${env.BUILD_ID}"
         GithubUser="jeetu844"
         GithubRepo="Shopping-reactJS-DevOps"
+        MyName="Jitendra Sharma"
+        MyEmail="jeetu.844@gmail.com"
     }
     stages {
         stage('Pull Source') {
@@ -47,32 +49,34 @@ pipeline {
         //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
         //     }
         // }
-        stage('Docker Image'){
-            steps{
-                script{
-                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
-                    sh '''
-                        docker build -t shopping:$Version .
-                        docker tag shopping:$Version jeetu844/shopping:$Version
-                        docker tag shopping:$Version jeetu844/shopping:latest
-                        docker push jeetu844/shopping:$Version
-                        docker push jeetu844/shopping:latest
-                    '''
-                    }
-                }
-            }
-        }
-        stage('Trivy Image Scan'){
-            steps{
-                sh 'trivy image shopping:$Version > trivyimage.txt'
-            }
-        }
+        // stage('Docker Image'){
+        //     steps{
+        //         script{
+        //             withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
+        //             sh '''
+        //                 docker build -t shopping:$Version .
+        //                 docker tag shopping:$Version jeetu844/shopping:$Version
+        //                 docker tag shopping:$Version jeetu844/shopping:latest
+        //                 docker push jeetu844/shopping:$Version
+        //                 docker push jeetu844/shopping:latest
+        //             '''
+        //             }
+        //         }
+        //     }
+        // }
+        // stage('Trivy Image Scan'){
+        //     steps{
+        //         sh 'trivy image shopping:$Version > trivyimage.txt'
+        //     }
+        // }
         stage('Update Manifest'){
             steps{
                 script{
                     withCredentials([string(credentialsId: 'github-token', variable: 'gitcred')]) {
                         sh '''
                             sed -i 's|image: .*|image: jeetu844/shopping:$Version|g' deployment.yml
+                            git config --global user.email "${MyEmail}"
+                            git config --global user.name "${MyName}"
                             git add .
                             git commit -a -m "Update Manifest with jeetu844/shopping:${Version}"
                             git push https://$gitcred@github.com/$GithubUser/$GithubRepo HEAD:main
