@@ -180,12 +180,17 @@ kubectl edit svc stable-grafana -n prometheus
 kubectl get svc -n prometheus
 ```
 ### Let's Jenkins Configuration
+```bash
+<Your Public IP Address:8080>
+```
 ![Jenkins login password](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/LoginPage.jpeg)
 
 For get Administrator password
 ```bash
 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
+#### Now, install the suggested plugins.
+![Suggested Plugins](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/suggested-plugins.png)
 #### Jenkins plugins installations
 - Eclipse Temurin Installer (Install without restart)
 - SonarQube Scanner (Install without restart)
