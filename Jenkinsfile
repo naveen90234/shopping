@@ -60,5 +60,10 @@ pipeline {
                 }
             }
         }
+        stage('Trivy Image Scan'){
+            steps{
+                sh 'trivy image shopping:$Version > trivyimage.txt'
+            }
+        }
     }
 }
