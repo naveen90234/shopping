@@ -267,6 +267,18 @@ Goto Manage Jenkins -> Tools
 - Click on "Generate"
 - Copy your Token
 ![SonarQube Step-4](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/token-step-4.png)
+#### Create SonarQube Webhook
+- Click on "Administration"
+![SonarQube Webhook Step-1](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/token-step-1.png)
+- Click on "Configuration"
+- Click on "Webhooks"
+![SonarQube Webhook Step-2](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/webhook-step-1.png)
+- Click on "Create"
+![SonarQube Webhook Step-3](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/webhook-step-2.png)
+  - Name "Jenkins"
+  - URL "<Jenkins PublicIP:8080/sonarqube-webhook/>
+  - Click on "Create"
+![SonarQube Webhook Step-4](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/webhook-step-3.png)
 
 ## Authors
 
