@@ -53,6 +53,7 @@ systemctl enable docker
 systemctl start docker
 usermod -aG docker $USER
 newgrp docker
+chmod 777 /var/run/docker.sock
 ```
 
 ## SonarQube Installation
