@@ -51,6 +51,10 @@ pipeline {
                     withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
                     sh '''
                         docker build -t shopping:$Version .
+                        docker tag shopping:$Version jeetu844/shopping:$Version
+                        docker tag shopping:$Version jeetu844/shopping:latest
+                        docker push jeetu844/shopping:$Version
+                        docker push jeetu844/shopping:latest
                     '''
                     }
                 }
