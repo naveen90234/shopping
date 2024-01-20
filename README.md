@@ -212,6 +212,42 @@ Goto Manage Jenkins -> Plugins -> Available plugins
 ![Docker Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/docker.jpeg)
 
 **Restart your Jenkins** ```<Your PublicIP:8080/restart>```
+
+#### Jenkins Tools installations
+Goto Manage Jenkins -> Tools
+- ADD JDK
+  - Name -> "jdk17"
+  - Click on "Install automatically"
+  - Add Installer "Install from adoptium.net"
+  - Version "jdk-17.0.8.1+1"
+![Jenkins JDK Configuration](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Jenkins-JDK-Configure.png)
+- SonarQube Scanner installations
+  - Click on "Add SonarQube Scanner"
+  - Name "sonar-scanner"
+![Jenkins Sonar Scanner Tool](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Jenkins-SonarTool-installation.png)
+- NodeJS installations
+  - Click on "Add NodeJS"
+  - Name "nodejs20"
+  - Click on "Install automatically"
+  - Select "NodeJS 20.11.0"
+![Jenkins NodeJS Tool](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Jenkins-NodeJS-Tool.png)
+- Dependency-Check installations
+  - Click on "Add Dependency-Check"
+  - Name "DP-Check"
+  - Click on "Install automatically"
+  - Click on "Add Installer"
+  - Select "Install from github.com"
+  - Select Version "dependency-check 6.5.1"
+![Jenkins DP-Check Tool](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Jenkins-DP-Check-Tool.png)
+- Docker installations
+  - Click on "Add Docker"
+  - Name "docker"
+  - Click on "Install automatically"
+  - Click on "Add Installer"
+  - Select "Download from docker.com"
+  - Docker version "latest"
+![Jenkins Docker Tool](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Jenkins-Docker-Tool.png)
+
 ## Authors
 
 - [@Jitendra Sharma](https://www.github.com/jeetu844)
