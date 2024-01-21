@@ -55,11 +55,11 @@ pipeline {
                 script{
                     withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
                     sh '''
-                        docker build -t shopping:$Version .
-                        docker tag shopping:$Version $DockerRepo/shopping:$Version
-                        docker tag shopping:$Version $DockerRepo/shopping:latest
-                        docker push $DockerRepo/shopping:$Version
-                        docker push $DockerRepo/shopping:latest
+                        docker build -t $DockerRepo:$Version .
+                        docker tag shopping:$Version $DockerUser/$DockerRepo:$Version
+                        docker tag shopping:$Version $DockerUser/$DockerRepo:latest
+                        docker push $DockerUser/$DockerRepo:$Version
+                        docker push $DockerUser/$DockerRepo:latest
                     '''
                     }
                 }
@@ -80,11 +80,11 @@ pipeline {
                 script{
                     withCredentials([string(credentialsId: 'github-token', variable: 'gitcred')]) {
                         sh '''
-                            sed -i "s|image: .*|image: ${DockerRepo}/shopping:${Version}|g" deployment.yml
+                            sed -i "s|image: .*|image: ${DockerUser}/$DockerRepo:${Version}|g" deployment.yml
                             git config --global user.email ${MyEmail}
                             git config --global user.name ${MyName}
                             git add deployment.yml
-                            git commit -a -m "Update Manifest with $DockerRepo/shopping:$Version"
+                            git commit -a -m "Update Manifest with $DockerUser/$DockerRepo:$Version"
                             git push https://$gitcred@github.com/$GithubUser/$GithubRepo HEAD:main
                         '''
                     }
