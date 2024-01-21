@@ -13,12 +13,12 @@ pipeline {
         MyEmail="jeetu.844@gmail.com"
     }
     stages {
-        stage('Pull Source') {
-            steps {
-                cleanWs()
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-DevOps.git'
-            }
-        }
+        // stage('Pull Source') {
+        //     steps {
+        //         cleanWs()
+        //         git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-DevOps.git'
+        //     }
+        // }
         // stage('Sonar Scan'){
         //     steps{
         //         script{
