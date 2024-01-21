@@ -226,8 +226,9 @@ For that we have to use webhook in GitHub***
   - SSL Verification: Disable
 - Add webhook
 ![Add webhook](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-15.png)
-Now k8s update automatically when repository will update.## Prometheus Grafana Installation on K8s
-Prometheus Grafana Installation on K8s using helm
+Now k8s update automatically when repository will update.
+## Prometheus Grafana Installation on K8s
+### Helm Installation
 ```bash
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
