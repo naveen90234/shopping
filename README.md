@@ -168,6 +168,7 @@ export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jso
 ***Paste URL in Web Browser***
 
 `https://142.44.249.127:30000` // Replace ip with your 2nd Server ip
+
 `Username = admin`
 - For get Argocd password 
 ```bash
