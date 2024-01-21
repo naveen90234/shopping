@@ -484,7 +484,7 @@ Goto Manage Jenkins -> Tools
 - Kind: Select "Secret text"
 - Secret: Paste you github token
 - ID: github-token (this name will use in jenkins pipeline)
-
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-14.png)
 ## Authors
 
 - [@Jitendra Sharma](https://www.linkedin.com/in/jitendra-kumar-sharma-0b662751/)
