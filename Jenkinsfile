@@ -14,6 +14,7 @@ pipeline {
 
         GithubUser=params.GithubUser
         GithubRepo=params.GithubRepo
+        DockerUser=params.DockerUser
         DockerRepo=params.DockerRepo
         MyName=params.MyName
         MyEmail=params.MyEmail
