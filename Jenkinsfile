@@ -8,7 +8,7 @@ pipeline {
         SCANNER_HOME=tool 'sonar-scanner'
         Version="${env.BUILD_ID}"
         GithubUser="jeetu844"
-        GithubRepo="Shopping-reactJS-DevOps"
+        GithubRepo="Shopping-reactJS-manifest"
         MyName="Jitendra Sharma"
         MyEmail="jeetu.844@gmail.com"
     }
@@ -67,6 +67,11 @@ pipeline {
         stage('Trivy Image Scan'){
             steps{
                 sh 'trivy image shopping:$Version > trivyimage.txt'
+            }
+        }
+        stage('Manifest Pull'){
+            stage{
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-manifest.git'
             }
         }
         stage('Update Manifest'){
