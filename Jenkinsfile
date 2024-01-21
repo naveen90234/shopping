@@ -7,10 +7,16 @@ pipeline {
     environment{
         SCANNER_HOME=tool 'sonar-scanner'
         Version="${env.BUILD_ID}"
-        GithubUser="jeetu844"
-        GithubRepo="Shopping-reactJS-manifest"
-        MyName="Jitendra Sharma"
-        MyEmail="jeetu.844@gmail.com"
+        // GithubUser="jeetu844"
+        // GithubRepo="Shopping-reactJS-manifest"
+        // MyName="Jitendra Sharma"
+        // MyEmail="jeetu.844@gmail.com"
+
+        GithubUser=params.GithubUser
+        GithubRepo=params.GithubRepo
+        DockerRepo=params.DockerRepo
+        MyName=params.MyName
+        MyEmail=params.MyEmail
     }
     stages {
         // stage('Sonar Scan'){
@@ -49,10 +55,10 @@ pipeline {
                     withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
                     sh '''
                         docker build -t shopping:$Version .
-                        docker tag shopping:$Version jeetu844/shopping:$Version
-                        docker tag shopping:$Version jeetu844/shopping:latest
-                        docker push jeetu844/shopping:$Version
-                        docker push jeetu844/shopping:latest
+                        docker tag shopping:$Version $DockerRepo/shopping:$Version
+                        docker tag shopping:$Version $DockerRepo/shopping:latest
+                        docker push $DockerRepo/shopping:$Version
+                        docker push $DockerRepo/shopping:latest
                     '''
                     }
                 }
@@ -73,11 +79,11 @@ pipeline {
                 script{
                     withCredentials([string(credentialsId: 'github-token', variable: 'gitcred')]) {
                         sh '''
-                            sed -i "s|image: .*|image: jeetu844/shopping:${Version}|g" deployment.yml
+                            sed -i "s|image: .*|image: ${DockerRepo}/shopping:${Version}|g" deployment.yml
                             git config --global user.email ${MyEmail}
                             git config --global user.name ${MyName}
                             git add deployment.yml
-                            git commit -a -m "Update Manifest with jeetu844/shopping:$Version"
+                            git commit -a -m "Update Manifest with $DockerRepo/shopping:$Version"
                             git push https://$gitcred@github.com/$GithubUser/$GithubRepo HEAD:main
                         '''
                     }
