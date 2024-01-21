@@ -12,7 +12,7 @@ pipeline {
         // MyName="Jitendra Sharma"
         // MyEmail="jeetu.844@gmail.com"
 
-        GithubUser=params.GithubUser
+        GithubUser="${params.GithubUser}"
         GithubRepo=params.GithubRepo
         DockerUser=params.DockerUser
         DockerRepo=params.DockerRepo
