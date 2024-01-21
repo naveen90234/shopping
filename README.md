@@ -215,7 +215,23 @@ kubectl get svc -n prometheus
 
 `http://142.44.249.127:30001` Replace ip with your 2nd Server ip
 
-[Click here]() For Grafana configration
+## Grafana Configration
+We are using Prometheus for kubernetes Cluster Data Source which will provide data to Grafana And We are using Grafana for kubernetes Cluster visualization.
+We are using some steps for K8s Cluster Dashboards.
+
+- Import Dashboard
+  - Click on Top Right + button then click import dashboard
+![import dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-1.png)
+  - Enter 15661 and click on Load for load predefined Dashboard.
+![predefined Dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-2.png)
+- Select Prometheus Data Source and Click on Import
+![Prometheus Data Source](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-3.png)
+- K8s Cluster Dashboard has successfully Loded.
+![K8s Cluster Dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-4.png)
+- We import new Dashboard with same process with id no 3119
+![new Dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-5.png)
+- K8s Cluster Another Dashboard has successfully Loded.
+![Dashboard2](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-6.png)
 ### Let's Jenkins Configure
 ***Paste URL in Web Browser***
 
