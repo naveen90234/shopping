@@ -202,8 +202,8 @@ helm install stable prometheus-community/kube-prometheus-stack -n prometheus
 
 To make Prometheus and grafana available outside the cluster, use LoadBalancer or NodePort instead of ClusterIP.
 ```bash
-kubectl patch service stable-kube-prometheus-sta-prometheus -n prometheus --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30001}, {"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
-kubectl patch service stable-grafana -n prometheus --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30002},{"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
+kubectl patch service stable-kube-prometheus-sta-prometheus -n prometheus --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30002}, {"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
+kubectl patch service stable-grafana -n prometheus --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30001},{"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
 
 ```
 
@@ -211,10 +211,16 @@ kubectl patch service stable-grafana -n prometheus --type='json' -p='[{"op": "re
 kubectl get svc -n prometheus
 
 ```
+***Paste URL in Web Browser***
+
+`http://142.44.249.127:30001` Replace ip with your 2nd Server ip
+
+[Click here]() For Grafana configration
 ### Let's Jenkins Configure
-```bash
-<Your Public IP Address:8080>
-```
+***Paste URL in Web Browser***
+
+`http://142.44.249.117:8080` Replace ip with your 1st Server ip
+
 ![Jenkins login password](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/LoginPage.jpeg)
 
 For get Administrator password
