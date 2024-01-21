@@ -70,7 +70,7 @@ pipeline {
         //     }
         // }
         stage('Manifest Pull'){
-            stage{
+            steps{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-manifest.git'
             }
         }
