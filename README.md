@@ -1,98 +1,3 @@
-readme.so logo
-
-light
-Download
-SectionsReset
-
-Delete
-Click on a section below to edit the contents
-
-
-
-
-
-
-
-
-
-
-Click on a section below to add it to your readme
-Search for a section
-
-Custom Section
-
-Acknowledgements
-
-API Reference
-
-Appendix
-
-Badges
-
-Color Reference
-
-Contributing
-
-Demo
-
-Deployment
-
-Documentation
-
-Environment Variables
-
-FAQ
-
-Features
-
-Feedback
-
-Github Profile - About Me
-
-Github Profile - Introduction
-
-Github Profile - Links
-
-Github Profile - Other
-
-Github Profile - Skills
-
-Lessons
-
-License
-
-Logo
-
-Optimizations
-
-Related
-
-Roadmap
-
-Run Locally
-
-Support
-
-Tech
-
-Running Tests
-
-Usage/Examples
-
-Used By
-Editor
-![SonarQube Webhook Step-2](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/webhook-step-1.png)
-- Click on "Create"
-![SonarQube Webhook Step-3](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/webhook-step-2.png)
-  - Name "Jenkins"
-  - URL `http://142.44.249.117:8080/sonarqube-webhook/` **Replace ip with your 1st Server**
-  - Click on "Create"
-![SonarQube Webhook Step-4](https://raw.githubusercontent.com/
-Restart your Jenkins
-No results
-Preview
-Raw
-
 
 # Shopping App with DevSecOps
 
@@ -413,7 +318,7 @@ Goto Manage Jenkins -> Plugins -> Available plugins
 
 ![Docker Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/docker.jpeg)
 
-**Restart your Jenkins** ```<Your PublicIP:8080/restart>```
+**Restart your Jenkins** `http://142.44.249.117:8080/restart` **Replace ip with your 1st server ip**
 
 #### Jenkins Tools installations
 Goto Manage Jenkins -> Tools
@@ -451,9 +356,9 @@ Goto Manage Jenkins -> Tools
 ![Jenkins Docker Tool](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Jenkins-Docker-Tool.png)
 
 ### Let's SonarQube Configure
-```
-<Your Public IP Address:9000>
-```
+
+`http://142.44.249.117:9000` **Replace ip with your 1st Server ip**
+
 - Default Credentials
   - Username : admin
   - Password : admin
@@ -526,5 +431,3 @@ Goto Manage Jenkins -> Tools
 
 - [@Jitendra Sharma](https://www.linkedin.com/in/jitendra-kumar-sharma-0b662751/)
   
-Buy Me A Coffee
-No results found for 'Restart your Jenkins'
