@@ -175,6 +175,7 @@ export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jso
 echo $ARGO_PWD
 
 ```
+[Click Here]() For Argocd configration
 ## Prometheus Grafana Installation on K8s
 Prometheus Grafana Installation on K8s using helm
 ```bash
@@ -190,38 +191,22 @@ helm version --client
 ```
 ```bash
 helm repo add stable https://charts.helm.sh/stable
-
-```
-```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
 ```
 ```bash
 kubectl create namespace prometheus
-
-```
-```bash
 helm install stable prometheus-community/kube-prometheus-stack -n prometheus
 
 ```
-```bash
-kubectl get pods -n prometheus
 
-```
-```bash
-kubectl get svc -n prometheus
-
-```
 To make Prometheus and grafana available outside the cluster, use LoadBalancer or NodePort instead of ClusterIP.
 ```bash
-kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus
+kubectl patch service stable-kube-prometheus-sta-prometheus -n prometheus --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30001}, {"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
+kubectl patch service stable-grafana -n prometheus --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30002},{"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
 
 ```
-![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/k8s-prometheus.jpeg)
-```bash
-kubectl edit svc stable-grafana -n prometheus
 
-```
 ```bash
 kubectl get svc -n prometheus
 
