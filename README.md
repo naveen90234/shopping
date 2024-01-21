@@ -160,15 +160,15 @@ yum -y install epel-release
 yum -y install jq
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.7/manifests/install.yaml
-kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
+kubectl patch service argocd-server -n argocd --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30000}, {"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
 export ARGOCD_SERVER=`kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.nodePort.ingress[0].hostname'`
 export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
 
 ```
 ***Paste URL in Web Browser***
 
-`https://192.168.64.72:32753` // Replace public ip
-
+`https://142.44.249.127:30000` // Replace ip with your 2nd Server ip
+`Username = admin`
 - For get Argocd password 
 ```bash
 echo $ARGO_PWD
