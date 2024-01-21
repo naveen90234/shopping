@@ -5,6 +5,23 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 
 
 ![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/Jenkins_pipeline.png)
+### In this project we are using 3 servers which OS is CentOS 7
+- **1st Server** (142.44.249.117)
+  - [Jenkins](https://github.com/jeetu844/Shopping-reactJS-DevOps#jenkins-installation)
+  - [Docker](https://github.com/jeetu844/Shopping-reactJS-DevOps#docker-installation)
+  - [SonarQube](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#sonarqube-installation)
+  - [Trivy](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#trivy-installation)
+- **2nd Server** (142.44.249.127)
+  - [Docker](https://github.com/jeetu844/Shopping-reactJS-DevOps#docker-installation)
+  - [Kubernetes Master](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#k8s-installation)
+  - [Argocd](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#argocd-installation)
+  - [Helm](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#prometheus-grafana-installation-on-k8s)
+  - [Prometheus](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#prometheus-grafana-installation-on-k8s)
+  - [Grafana](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#prometheus-grafana-installation-on-k8s)
+- **3rd Server** (142.44.249.126)
+  - [Docker](https://github.com/jeetu844/Shopping-reactJS-DevOps#docker-installation)
+  - [Kubernetes Node](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#k8s-installation)
+
 ## Installation Steps
 
 - Step1: [Jenkins Installation on CentOS 7](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#jenkins-installation)
