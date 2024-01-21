@@ -11,7 +11,7 @@ const Landing = ({ changeCategory }) => {
   return (
     <main className="landing">
       <article className="hero">
-        <h2>Building a better <span>Jeetu!</span></h2>
+        <h2>Building a better <span>Payal!</span></h2>
         <video autoPlay loop muted playsInline>
           <source src={HeroVideo} type="video/mp4" />
         </video>
