@@ -140,6 +140,10 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
 export ARGOCD_SERVER=`kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.nodePort.ingress[0].hostname'`
 export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
 ```
+***Paste URL in Web Browser***
+```
+https://192.168.64.72:32753 // Replace public ip
+```
 - For get Argocd password 
 ```bash
 echo $ARGO_PWD
