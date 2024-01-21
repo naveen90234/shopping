@@ -13,11 +13,11 @@ pipeline {
         // MyEmail="jeetu.844@gmail.com"
 
         GithubUser="${params.GithubUser}"
-        GithubRepo=params.GithubRepo
-        DockerUser=params.DockerUser
-        DockerRepo=params.DockerRepo
-        MyName=params.MyName
-        MyEmail=params.MyEmail
+        GithubRepo="${params.GithubRepo}"
+        DockerUser="${params.DockerUser}"
+        DockerRepo="${params.DockerRepo}"
+        MyName="${params.MyName}"
+        MyEmail="${params.MyEmail}"
     }
     stages {
         // stage('Sonar Scan'){
