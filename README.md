@@ -175,8 +175,58 @@ export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jso
 echo $ARGO_PWD
 
 ```
-[Click Here]() For Argocd configration
-## Prometheus Grafana Installation on K8s
+
+## Argocd Configration
+We will import k8s manifest yaml file from git repository (github) so we will use some steps
+- Click on settings logo on Argocd leftbar
+![settings logo](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-1.png)
+- Click on Repositories
+![Repositories](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-2.png)
+- We will connect with github using https protocol so click on click on HTTPS
+![HTTPS](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-3.png)
+- We will copy repository https url from github.
+![repository https url](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-4.png)
+- We will paste this url on Argocd , If your repository is private then you have to fill username/password fields also.
+- After then click on Connect Button
+![Connect](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-5.png)
+- You will get connection successful status.
+- After that click on Apps button which is below of argocd logo in leftbar
+![Apps button](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-6.png)
+- We will create new App so click on new App
+![new App](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-7.png)
+- We will fill general informations -
+  - Application Name: shopping
+  - Project Name: default
+  - Repository URL: Select your github url
+  - Revision: HEAD
+  - Path: ./ (It means your k8s yaml are in rool directory in your repo)
+  - Clister URL: Select "Kubernetes.default.svc"
+  - Namespace: default (Where you want to run your pods)
+- Click on Create Button
+![general informations1](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-8.png)
+![general informations2](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-9.png)
+- Your App have been Successfully created , And your pod has Successfully created on default Namespace.
+- Click on Shopping for Detail view.
+![Successfully created](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-10.png)
+- You can see your all services and pods.
+![services and pods](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-11.png)
+
+***If you want anything to be updated in GitHub's yaml file, your Kubernetes cluster should also be updated at the same time.
+For that we have to use webhook in GitHub***
+- Click on Settings of your github repository.
+![Settings](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-12.png)
+- Click on Webhooks on Github's leftbar.
+![Webhook1](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-13.png)
+- Click on Add webhook.
+![Webkool2](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-14.png)
+- Fill all Details -
+  - Payload Url: Your Argocd URL (2nd Server IP) :30000/api/webhook
+  - Content type: application/json
+  - Secret: you can put anything or leave Blank
+  - SSL Verification: Disable
+- Add webhook
+![Add webhook](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-15.png)
+Now k8s update automatically when repository will update.## Prometheus Grafana Installation on K8s
 Prometheus Grafana Installation on K8s using helm
 ```bash
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
