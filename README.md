@@ -214,6 +214,8 @@ kubectl get svc -n prometheus
 ***Paste URL in Web Browser***
 
 `http://142.44.249.127:30001` Replace ip with your 2nd Server ip
+`UserName: admin`
+`Password: prom-operator`
 
 ## Grafana Configration
 We are using Prometheus for kubernetes Cluster Data Source which will provide data to Grafana And We are using Grafana for kubernetes Cluster visualization.
