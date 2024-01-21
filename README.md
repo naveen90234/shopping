@@ -427,6 +427,64 @@ Goto Manage Jenkins -> Tools
   - Click on "Linux"
 ![project-step-6](https://raw.githubusercontent.com/jeetu844/screenShots/main/SonarQube/project-step-6.png)
 
+## DockerHub Configration
+- Create account on [dockerhub](https://hub.docker.com)
+- Create a new repository on dockerhub
+![DockerHub](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-1.png)
+![repository](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-2.png)
+
+**DockerHub Integration with Jenkins**
+- Open Jenkins -> Goto Manage jenkins -> Credentials
+- Click on (global)
+![global](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-3.png)
+- Click on Add Credentials
+![Credentials](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-4.png)
+- Select in Kind: Ussername with password
+  - Usernam: Your DockerHub account Ussername
+  - Password: Your DockerHub account Password
+  - ID: dockerhub **(This name we will use in Jenkins Pipeline)**
+  - Description: dockerhub
+![dockerhub](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-5.png)
+## Github Configration
+**We will create Github Token**
+- Click on github logo to top right side
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-1.png)
+- You will see a dropdown menu, Click on Settings
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-2.png)
+- Click on Developer Settings on sidebar
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-3.png)
+- Click on "Personal access tokens"
+  - Click on "Tokens (Classic)"
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-5.png)
+- Click on "Generate new token"
+  - Click on "Generate new token (Classic)"
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-6.png)
+- Enter a name in Notes (Any name which you want)
+  - Expiration: You can set days OR set "No Expiration"
+  - Select All checkbox 
+  - Generate token
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-7.png)
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-8.png)
+**Copy this token and save it**
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-9.png)
+### Create new Repository for K8s Manifest
+- Click on + button then click on "New Repository"
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-10.png)
+- Repository Name: "shopping-manifest" **We will use this name in jenkins pipeline**
+- Select Public (For Private please check my another project)
+- Create Repository
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-11.png)
+
+### Add github token in Jenkins
+- Goto Manage Jenkins -> Credential in Jenkins
+- Click on "(global)"
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-12.png)
+- Click on Add Credentials
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-13.png)
+- Kind: Select "Secret text"
+- Secret: Paste you github token
+- ID: github-token (this name will use in jenkins pipeline)
+
 ## Authors
 
 - [@Jitendra Sharma](https://www.linkedin.com/in/jitendra-kumar-sharma-0b662751/)
