@@ -13,11 +13,6 @@ pipeline {
         MyEmail="jeetu.844@gmail.com"
     }
     stages {
-        stage('Clean Workspace') {
-            steps {
-                cleanWs()
-            }
-        }
         stage('Sonar Scan'){
             steps{
                 script{
@@ -87,6 +82,11 @@ pipeline {
                         '''
                     }
                 }
+            }
+        }
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
             }
         }
     }
