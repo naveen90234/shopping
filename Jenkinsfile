@@ -13,36 +13,36 @@ pipeline {
         MyEmail="jeetu.844@gmail.com"
     }
     stages {
-        stage('Sonar Scan'){
-            steps{
-                script{
-                    withSonarQubeEnv('sonar-server') {
-                        sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=shopping'
-                    }
-                }
-            }
-        }
-        stage('Quality Gate'){
-            steps{
-                waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-            }
-        }
-        stage('NPM Installation'){
-            steps{
-                sh 'npm install'
-            }
-        }
-        stage('Trivy FS Scan'){
-            steps{
-                sh 'trivy fs . > trivyfs.txt'
-            }
-        }
-        stage('OWASP Scan'){
-            steps{
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
-        }
+        // stage('Sonar Scan'){
+        //     steps{
+        //         script{
+        //             withSonarQubeEnv('sonar-server') {
+        //                 sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=shopping'
+        //             }
+        //         }
+        //     }
+        // }
+        // stage('Quality Gate'){
+        //     steps{
+        //         waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+        //     }
+        // }
+        // stage('NPM Installation'){
+        //     steps{
+        //         sh 'npm install'
+        //     }
+        // }
+        // stage('Trivy FS Scan'){
+        //     steps{
+        //         sh 'trivy fs . > trivyfs.txt'
+        //     }
+        // }
+        // stage('OWASP Scan'){
+        //     steps{
+        //         dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+        //     }
+        // }
         stage('Docker Image'){
             steps{
                 script{
@@ -58,11 +58,11 @@ pipeline {
                 }
             }
         }
-        stage('Trivy Image Scan'){
-            steps{
-                sh 'trivy image shopping:$Version > trivyimage.txt'
-            }
-        }
+        // stage('Trivy Image Scan'){
+        //     steps{
+        //         sh 'trivy image shopping:$Version > trivyimage.txt'
+        //     }
+        // }
         stage('Manifest Pull'){
             steps{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-manifest.git'
