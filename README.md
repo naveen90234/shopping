@@ -57,6 +57,7 @@ sudo yum -y install jenkins
 sudo systemctl daemon-reload
 service jenkins start
 systemctl enable jenkins
+
 ```
 
 ## Docker Installation
@@ -71,6 +72,7 @@ systemctl start docker
 usermod -aG docker $USER
 newgrp docker
 chmod 777 /var/run/docker.sock
+
 ```
 
 ## SonarQube Installation
@@ -78,6 +80,7 @@ SonarQube Installation using Docker Image
 
 ```bash
 docker run -d -p 9000:9000 sonarqube:lts
+
 ```
 
 ## Trivy Installation 
@@ -92,6 +95,7 @@ enabled=1" > /etc/yum.repos.d/trivy.repo
 
 yum -y update
 yum -y install trivy
+
 ```
 
 ## K8s Installation
@@ -126,6 +130,7 @@ sudo sysctl --system
 
 rm -rf /etc/containerd/config.toml
 systemctl restart containerd
+
 ```
 **For K8s Master Only**
 ```bash
@@ -146,6 +151,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 kubeadm join 192.168.63.76:6443 --token u09eln.emqgd14u5p4wh2w0 \
 --discovery-token-ca-cert-hash \
 sha256:e5d568e17f8eda67c61b3f2addfcb74edc498a3b880c964b9a8072718a4e18ff
+
 ```
 ## Argocd Installation
 Argocd Installation on K8s
@@ -157,14 +163,16 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
 export ARGOCD_SERVER=`kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.nodePort.ingress[0].hostname'`
 export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
+
 ```
 ***Paste URL in Web Browser***
-```
-https://192.168.64.72:32753 // Replace public ip
-```
+
+`https://192.168.64.72:32753` // Replace public ip
+
 - For get Argocd password 
 ```bash
 echo $ARGO_PWD
+
 ```
 ## Prometheus Grafana Installation on K8s
 Prometheus Grafana Installation on K8s using helm
@@ -172,39 +180,50 @@ Prometheus Grafana Installation on K8s using helm
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
+
 ```
 - See the Helm version
 ```bashh
 helm version --client
+
 ```
 ```bash
 helm repo add stable https://charts.helm.sh/stable
+
 ```
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
 ```
 ```bash
 kubectl create namespace prometheus
+
 ```
 ```bash
 helm install stable prometheus-community/kube-prometheus-stack -n prometheus
+
 ```
 ```bash
 kubectl get pods -n prometheus
+
 ```
 ```bash
 kubectl get svc -n prometheus
+
 ```
 To make Prometheus and grafana available outside the cluster, use LoadBalancer or NodePort instead of ClusterIP.
 ```bash
 kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus
+
 ```
 ![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/k8s-prometheus.jpeg)
 ```bash
 kubectl edit svc stable-grafana -n prometheus
+
 ```
 ```bash
 kubectl get svc -n prometheus
+
 ```
 ### Let's Jenkins Configure
 ```bash
