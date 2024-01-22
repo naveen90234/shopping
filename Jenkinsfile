@@ -104,13 +104,13 @@ pipeline {
                 color: COLOR_MAP[currentBuild.currentResult],
                 message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} \n build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
                 )
+            cleanWs()
         }
-        always {
+        success {
             emailext attachLog: true, attachmentsPattern: '**/*.text',
                 body: "<br> Job Status = ${currentBuild.currentResult} <br> Job Name = ${env.JOB_NAME} <br> Build Number =  ${env.BUILD_NUMBER}\n <br> For Job More info visit here: ${env.BUILD_URL}",
                 recipientProviders: [developers(), requestor()],
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: "jeetu.844@gmail.com"
-                cleanWs()
     }
     }
 }
