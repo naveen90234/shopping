@@ -15,20 +15,20 @@ pipeline {
         MyEmail="${params.MyEmail}"
     }
     stages {
-        stage('Sonar Scan'){
-            steps{
-                script{
-                    withSonarQubeEnv('sonar-server') {
-                        sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=${DockerRepo}"
-                    }
-                }
-            }
-        }
-        stage('Quality Gate'){
-            steps{
-                waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-            }
-        }
+        // stage('Sonar Scan'){
+        //     steps{
+        //         script{
+        //             withSonarQubeEnv('sonar-server') {
+        //                 sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=${DockerRepo}"
+        //             }
+        //         }
+        //     }
+        // }
+        // stage('Quality Gate'){
+        //     steps{
+        //         waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+        //     }
+        // }
         // stage('NPM Installation'){
         //     steps{
         //         sh 'npm install'
@@ -45,21 +45,21 @@ pipeline {
         //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
         //     }
         // }
-        stage('Docker Image'){
-            steps{
-                script{
-                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
-                    sh '''
-                        docker build -t $DockerRepo:$Version .
-                        docker tag $DockerRepo:$Version $DockerUser/$DockerRepo:$Version
-                        docker tag $DockerRepo:$Version $DockerUser/$DockerRepo:latest
-                        docker push $DockerUser/$DockerRepo:$Version
-                        docker push $DockerUser/$DockerRepo:latest
-                    '''
-                    }
-                }
-            }
-        }
+        // stage('Docker Image'){
+        //     steps{
+        //         script{
+        //             withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
+        //             sh '''
+        //                 docker build -t $DockerRepo:$Version .
+        //                 docker tag $DockerRepo:$Version $DockerUser/$DockerRepo:$Version
+        //                 docker tag $DockerRepo:$Version $DockerUser/$DockerRepo:latest
+        //                 docker push $DockerUser/$DockerRepo:$Version
+        //                 docker push $DockerUser/$DockerRepo:latest
+        //             '''
+        //             }
+        //         }
+        //     }
+        // }
         // stage('Trivy Image Scan'){
         //     steps{
         //         sh 'trivy image $DockerRepo:$Version > trivyimage.txt'
