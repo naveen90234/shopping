@@ -309,6 +309,8 @@ Goto Manage Jenkins -> Plugins -> Available plugins
 - Docker Pipeline (Install Without restart)
 - Docker API (Install Without restart)
 - Docker-build-step (Install Without restart)
+- Slack (Install Without restart)
+- Splunk (Install Without restart)
 
 ![Jenkins JDK Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/JDK-plugin.jpeg)
 
@@ -317,6 +319,8 @@ Goto Manage Jenkins -> Plugins -> Available plugins
 ![OWASP Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/owasp.jpeg)
 
 ![Docker Plugin Installation](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/docker.jpeg)
+
+![slack](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/slack-plugin.png)
 
 **Restart your Jenkins** `http://142.44.249.117:8080/restart` **Replace ip with your 1st server ip**
 
