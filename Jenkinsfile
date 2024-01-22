@@ -19,56 +19,56 @@ pipeline {
         MyEmail="${params.MyEmail}"
     }
     stages {
-        // stage('Sonar Scan'){
-        //     steps{
-        //         script{
-        //             withSonarQubeEnv('sonar-server') {
-        //                 sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=${DockerRepo}"
-        //             }
-        //         }
-        //     }
-        // }
-        // stage('Quality Gate'){
-        //     steps{
-        //         waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-        //     }
-        // }
-        // stage('NPM Installation'){
-        //     steps{
-        //         sh 'npm install'
-        //     }
-        // }
-        // stage('Trivy FS Scan'){
-        //     steps{
-        //         sh 'trivy fs . > trivyfs.txt'
-        //     }
-        // }
-        // stage('OWASP Scan'){
-        //     steps{
-        //         dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-        //     }
-        // }
-        // stage('Docker Image'){
-        //     steps{
-        //         script{
-        //             withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
-        //             sh '''
-        //                 docker build -t $DockerRepo:$Version .
-        //                 docker tag $DockerRepo:$Version $DockerUser/$DockerRepo:$Version
-        //                 docker tag $DockerRepo:$Version $DockerUser/$DockerRepo:latest
-        //                 docker push $DockerUser/$DockerRepo:$Version
-        //                 docker push $DockerUser/$DockerRepo:latest
-        //             '''
-        //             }
-        //         }
-        //     }
-        // }
-        // stage('Trivy Image Scan'){
-        //     steps{
-        //         sh 'trivy image $DockerRepo:$Version > trivyimage.txt'
-        //     }
-        // }
+        stage('Sonar Scan'){
+            steps{
+                script{
+                    withSonarQubeEnv('sonar-server') {
+                        sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=${DockerRepo}"
+                    }
+                }
+            }
+        }
+        stage('Quality Gate'){
+            steps{
+                waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+            }
+        }
+        stage('NPM Installation'){
+            steps{
+                sh 'npm install'
+            }
+        }
+        stage('Trivy FS Scan'){
+            steps{
+                sh 'trivy fs . > trivyfs.txt'
+            }
+        }
+        stage('OWASP Scan'){
+            steps{
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+        stage('Docker Image'){
+            steps{
+                script{
+                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
+                    sh '''
+                        docker build -t $DockerRepo:$Version .
+                        docker tag $DockerRepo:$Version $DockerUser/$DockerRepo:$Version
+                        docker tag $DockerRepo:$Version $DockerUser/$DockerRepo:latest
+                        docker push $DockerUser/$DockerRepo:$Version
+                        docker push $DockerUser/$DockerRepo:latest
+                    '''
+                    }
+                }
+            }
+        }
+        stage('Trivy Image Scan'){
+            steps{
+                sh 'trivy image $DockerRepo:$Version > trivyimage.txt'
+            }
+        }
         stage('Manifest Pull'){
             steps{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-manifest.git'
@@ -106,11 +106,11 @@ pipeline {
                 )
             cleanWs()
         }
-        success {
-            emailext attachLog: true, attachmentsPattern: '**/*.text',
-                body: "<br> Job Status = ${currentBuild.currentResult} <br> Job Name = ${env.JOB_NAME} <br> Build Number =  ${env.BUILD_NUMBER}\n <br> For Job More info visit here: ${env.BUILD_URL}",
-                recipientProviders: [developers(), requestor()],
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: "jeetu.844@gmail.com"
-    }
+        // success {
+        //     emailext attachLog: true, attachmentsPattern: '**/*.text',
+        //         body: "<br> Job Status = ${currentBuild.currentResult} <br> Job Name = ${env.JOB_NAME} <br> Build Number =  ${env.BUILD_NUMBER}\n <br> For Job More info visit here: ${env.BUILD_URL}",
+        //         recipientProviders: [developers(), requestor()],
+        //         subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: "jeetu.844@gmail.com"
+        // }
     }
 }
