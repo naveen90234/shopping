@@ -65,11 +65,11 @@ pipeline {
         //         sh 'trivy image $DockerRepo:$Version > trivyimage.txt'
         //     }
         // }
-        // stage('Manifest Pull'){
-        //     steps{
-        //         git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-manifest.git'
-        //     }
-        // }
+        stage('Manifest Pull'){
+            steps{
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-manifest.git'
+            }
+        }
         stage('Update Manifest'){
             steps{
                 script{
