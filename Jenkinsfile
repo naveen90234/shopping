@@ -69,27 +69,27 @@ pipeline {
         //         sh 'trivy image $DockerRepo:$Version > trivyimage.txt'
         //     }
         // }
-        // stage('Manifest Pull'){
-        //     steps{
-        //         git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-manifest.git'
-        //     }
-        // }
-        // stage('Update Manifest'){
-        //     steps{
-        //         script{
-        //             withCredentials([string(credentialsId: 'github-token', variable: 'gitcred')]) {
-        //                 sh '''
-        //                     sed -i "s|image: .*|image: ${DockerUser}/$DockerRepo:${Version}|g" deployment.yml
-        //                     git config --global user.email ${MyEmail}
-        //                     git config --global user.name ${MyName}
-        //                     git add deployment.yml
-        //                     git commit -a -m "Update Manifest with $DockerUser/$DockerRepo:$Version"
-        //                     git push https://$gitcred@github.com/$GithubUser/$GithubRepo HEAD:main
-        //                 '''
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Manifest Pull'){
+            steps{
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/jeetu844/Shopping-reactJS-manifest.git'
+            }
+        }
+        stage('Update Manifest'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'github-token', variable: 'gitcred')]) {
+                        sh '''
+                            sed -i "s|image: .*|image: ${DockerUser}/$DockerRepo:${Version}|g" deployment.yml
+                            git config --global user.email ${MyEmail}
+                            git config --global user.name ${MyName}
+                            git add deployment.yml
+                            git commit -a -m "Update Manifest with $DockerUser/$DockerRepo:$Version"
+                            git push https://$gitcred@github.com/$GithubUser/$GithubRepo HEAD:main
+                        '''
+                    }
+                }
+            }
+        }
         // stage('Clean Workspace') {
         //     steps {
         //         cleanWs()
