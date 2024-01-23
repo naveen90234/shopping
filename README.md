@@ -20,7 +20,7 @@ In this project we are using : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8
   - [Grafana](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#prometheus-grafana-installation-on-k8s)
 - **3rd Server** (142.44.249.126)
   - [Docker](https://github.com/jeetu844/Shopping-reactJS-DevOps#docker-installation)
-  - [Kubernetes Node](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#k8s-installation)
+  - [Kubernetes Node](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#k8s-installation-on-centos-7-for-master--node)
 
 ## Installation Steps
 
