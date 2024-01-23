@@ -570,6 +570,79 @@ We have to create gmail app password 1st, using some steps we will create gmail 
 - In Slack dashboard you will receive a message from Jenkins
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-15.png)
 
+## Splunk Jenkins Integration
+- Create Account on [Splunk](https://www.splunk.com)
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-1.png)
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-2.png)
+- After Create Account click on `My Dashboard`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-3.png)
+- Click on `Products` then click on `Free Trials & Downloads`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-4.png)
+- Click on `Get My Free Trial`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-5.png)
+- Click on `Linux` then click on `Download Now`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-6.png)
+- Stop Downloading and click on `Command Line (wget)` then you will get wget Command and copy this
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-7.png)
+- Paste this comman on your server 
+```
+wget -O splunk-9.1.2-b6b9c8185839.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-b6b9c8185839.x86_64.rpm"
+sudo rpm -i splunk-9.1.2-b6b9c8185839.x86_64.rpm
+sudo /opt/splunk/bin/splunk start
+```
+- After this you will get `Splunk general terms` Keep pressing the Enter button until the Terms page is completed.
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-8.png)
+- Set username and password for for access your splunk UI
+- Now open your web browser and paste your splunk server ip with port 8000 in my case my ip is `142.44.249.127` so my splunk url will be `http://142.44.249.127:8000`
+- Enter your username/password which you have created on cli 
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-9.png)
+- Now click on `Apps` then click on `Find More Apps`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-10.png)
+- Search `jenkins` in search bar and click on `Install`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-11.png)
+- Now you will have to enter the username and password of your Splunk.com account.
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-12.png)
+- Click on `Done`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-13.png)
+- Now Click on `Settings` then click on `Data inputs`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-14.png)
+- Click on `HTTP Event Collector`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-15.png)
+- Click on `Global Settings`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-16.png)
+- Click on `Enabled` then uncheck `Enable SSL` then click on `Save`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-17.png)
+- Now Click on `New Token`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-18.png)
+- Enter token name (Anything which you want) in mycase i entered `Jenkins` then click on `Next` button 
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-19.png)
+- Now click on `Review`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-20.png)
+- Click on `Submit >` Button 
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-21.png)
+- You have get token copy this and click on `Start Searching`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-22.png)
+- Copy your splunk token
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-23.png)
+-  Open your Jenkins then click on `Manage Jenkins`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-24.png)
+- Click on `System`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-25.png)
+- Goto on `Splunk for Jenkins Configration` Section
+- Check on `Enable`
+- `HTTP input Host`: **Your Splunk Server IP**
+- `HTTP Input toke`: **Your Splunk Token**
+- `Jenkins Master Hostname`: `Your Jenkins server IP`
+- Click on `Test Connection` you will get `Splunk connection verified` message
+- Now click on `Apply` then click on `Save` button
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-26.png)
+- Now you have to restart your Jenkins server 
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-27.png)
+- For Splunk server restart click on `Settings` then click on `Server Controls`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-28.png)
+- Now click on `Rstart Splunk`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-29.png)
+
 ## Authors
 
 - [@Jitendra Sharma](https://www.linkedin.com/in/jitendra-kumar-sharma-0b662751/)
