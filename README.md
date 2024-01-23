@@ -543,7 +543,8 @@ https://github.com/jeetu844/Shopping-reactJS-DevOps.git
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-23.png)
 - Click on splunk for check jenkins metrics dashboard
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-24.png)
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-25.png)## K8s Installation on CentOS 7 **(For Master & Node)**
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-25.png)
+## K8s Installation on CentOS 7 **(For Master & Node)**
 
 ```bash
 setenforce 0
