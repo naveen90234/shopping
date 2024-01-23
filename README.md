@@ -513,7 +513,7 @@ We have to create gmail app password 1st, using some steps we will create gmail 
 - Goto `Manage Jenkins` -> `System` And Update System Admin e-mail address and name.
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-8.png)
 - On same page scroll down and goto on `Extended E-mail Notification`
-  - SMTP server: ```smtp.gmail.com```
+  - SMTP server: ` smtp.gmail.com `
   - SMTP port: ```465```
   - Credentials: `Select gmail`
   - Mark on `Use SSL`
@@ -528,6 +528,47 @@ We have to create gmail app password 1st, using some steps we will create gmail 
 - You will receive test email from Jenkins
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-13.png)
 
+
+## Slack Jenkins Integration
+- Create account on [Slack](https://slack.com/)
+- Enter your workspace name For example `Jenkins`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-1.png)
+- Enter your Name and Click on `Next`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-2.png)
+- You can `Skip` step 3
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-3.png)
+- Enter your project name For example `myproject`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-4.png)
+-  Click on `Jenkins` then click on `Settings & administration` then click on `Manage apps`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-5.png)
+- Search `jenkins ci` in search bar then click on `Jenkins CI`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-6.png)
+- Click on `Add to slack`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-7.png)
+- In `Post to Channel` section select `#myproject` (In our case `#myproject` is our channel name)
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-8.png)
+- Now click on `Add Jenkins CI Integration`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-9.png)
+- Copy `Team Subdomain` Value and Token , It will use in jenkins
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-10.png)
+- Open Jenkins and goto `Manage Jenkins` -> `Credentials` then click on `(global)`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-11.png)
+- Click on `Add Credentials`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-12.png)
+- Select `Secret text` in kind section
+- You have to paste your slack token in `Secret`
+- ID: `slack`
+- Click on `Create`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-13.png)
+- Now goto `Manage Jenkins` then click on `System` then goto `Slack` section
+  - Paste your workspace name which you copied from slack
+  - Select `sclack` in Credential
+  - Enter your channel name (in our case our channel name is `#myproject`)
+  - Click on `Test Connection` you will receive `Seccess` message
+- Then Click on `Apply` And `Save` Button
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-14.png)
+- In Slack dashboard you will receive a message from Jenkins
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/slack/step-15.png)
 
 ## Authors
 
