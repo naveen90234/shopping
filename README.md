@@ -489,6 +489,46 @@ Goto Manage Jenkins -> Tools
 - Secret: Paste you github token
 - ID: github-token (this name will use in jenkins pipeline)
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-14.png)
+## Gmail Jenkins Integration
+We will send email of Jenkins pipeline's Result, So we are using Gmail SMTP
+We have to create gmail app password 1st, using some steps we will create gmail app password.
+- Click on top right side image in gmail account then click on "Manage your google account"
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-1.jpg)
+- Search `app passwords` in search baar then click on `App Passwords`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-2.png)
+- Provide App name (In example we are providing `Jenkins`) and then click on `Create` Button.
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-3.png)
+- You will get a password , **Copy this password.**
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-4.jpg)
+- Open your Jenkins , Goto `Manage Jenkins` -> `Credentials` than click on `(global)`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-5.png)
+- Click on `Add Credentials`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-6.png)
+- Kind: `Username with password`
+- Username: `your gmail address`
+- Password: `your app password`
+- ID: `gmail`
+- Click on `Create`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-7.png)
+- Goto `Manage Jenkins` -> `System` And Update System Admin e-mail address and name.
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-8.png)
+- On same page scroll down and goto on `Extended E-mail Notification`
+  - SMTP server: ```smtp.gmail.com```
+  - SMTP port: ```465```
+  - Credentials: `Select gmail`
+  - Mark on `Use SSL`
+  - Default Content type: `HTML`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-9.jpg)
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-10.png)
+
+**Now goto on `E-mail Notification`**
+- Full all fields like previously And click on `Test configration`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-11.png)
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-12.png)
+- You will receive test email from Jenkins
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-13.png)
+
+
 ## Authors
 
 - [@Jitendra Sharma](https://www.linkedin.com/in/jitendra-kumar-sharma-0b662751/)
