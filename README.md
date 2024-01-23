@@ -97,194 +97,6 @@ yum -y update
 yum -y install trivy
 
 ```
-
-## K8s Installation
-K8s Installation on CentOS 7 **(For Master & Node)**
-
-```bash
-setenforce 0
-sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
-
-cat <<EOF > /etc/yum.repos.d/kubernetes.repo
-[kubernetes]
-name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-enabled=1
-gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-EOF
-
-yum install -y kubelet kubeadm kubectl
-systemctl enable kubelet
-systemctl start kubelet
-
-sed -i '/swap/d' /etc/fstab
-swapoff -a
-
-cat <<EOF > /etc/sysctl.d/k8s.conf
-net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables = 1
-EOF
-sudo sysctl --system
-
-rm -rf /etc/containerd/config.toml
-systemctl restart containerd
-
-```
-**For K8s Master Only**
-```bash
-kubeadm init --pod-network-cidr=10.244.0.0/16
-
-mkdir -p $HOME/.kube
-cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-chown $(id -u):$(id -g) $HOME/.kube/config
-
-export KUBECONFIG=/etc/kubernetes/admin.conf
-
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-
-```
-**For K8s Node Only**
-- Replace this token with original which you get on master Node
-```bash
-kubeadm join 192.168.63.76:6443 --token u09eln.emqgd14u5p4wh2w0 \
---discovery-token-ca-cert-hash \
-sha256:e5d568e17f8eda67c61b3f2addfcb74edc498a3b880c964b9a8072718a4e18ff
-
-```
-## Argocd Installation
-Argocd Installation on K8s
-```bash
-yum -y install epel-release
-yum -y install jq
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.7/manifests/install.yaml
-kubectl patch service argocd-server -n argocd --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30000}, {"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
-export ARGOCD_SERVER=`kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.nodePort.ingress[0].hostname'`
-export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
-
-```
-***Paste URL in Web Browser***
-
-`https://142.44.249.127:30000` // Replace ip with your 2nd Server ip
-
-`Username = admin`
-- For get Argocd password 
-```bash
-echo $ARGO_PWD
-
-```
-
-## Argocd Configration
-We will import k8s manifest yaml file from git repository (github) so we will use some steps
-- Click on settings logo on Argocd leftbar
-![settings logo](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-1.png)
-- Click on Repositories
-![Repositories](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-2.png)
-- We will connect with github using https protocol so click on click on HTTPS
-![HTTPS](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-3.png)
-- We will copy repository https url from github.
-![repository https url](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-4.png)
-- We will paste this url on Argocd , If your repository is private then you have to fill username/password fields also.
-- After then click on Connect Button
-![Connect](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-5.png)
-- You will get connection successful status.
-- After that click on Apps button which is below of argocd logo in leftbar
-![Apps button](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-6.png)
-- We will create new App so click on new App
-![new App](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-7.png)
-- We will fill general informations -
-  - Application Name: shopping
-  - Project Name: default
-  - Repository URL: Select your github url
-  - Revision: HEAD
-  - Path: ./ (It means your k8s yaml are in rool directory in your repo)
-  - Clister URL: Select "Kubernetes.default.svc"
-  - Namespace: default (Where you want to run your pods)
-- Click on Create Button
-![general informations1](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-8.png)
-![general informations2](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-9.png)
-- Your App have been Successfully created , And your pod has Successfully created on default Namespace.
-- Click on Shopping for Detail view.
-![Successfully created](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-10.png)
-- You can see your all services and pods.
-![services and pods](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-11.png)
-
-***If you want anything to be updated in GitHub's yaml file, your Kubernetes cluster should also be updated at the same time.
-For that we have to use webhook in GitHub***
-- Click on Settings of your github repository.
-![Settings](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-12.png)
-- Click on Webhooks on Github's leftbar.
-![Webhook1](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-13.png)
-- Click on Add webhook.
-![Webkool2](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-14.png)
-- Fill all Details -
-  - Payload Url: Your Argocd URL (2nd Server IP) :30000/api/webhook
-  - Content type: application/json
-  - Secret: you can put anything or leave Blank
-  - SSL Verification: Disable
-- Add webhook
-![Add webhook](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-15.png)
-Now k8s update automatically when repository will update.
-## Prometheus Grafana Installation on K8s
-### Helm Installation
-```bash
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
-
-```
-- See the Helm version
-```bashh
-helm version --client
-
-```
-```bash
-helm repo add stable https://charts.helm.sh/stable
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-
-```
-```bash
-kubectl create namespace prometheus
-helm install stable prometheus-community/kube-prometheus-stack -n prometheus
-
-```
-
-To make Prometheus and grafana available outside the cluster, use LoadBalancer or NodePort instead of ClusterIP.
-```bash
-kubectl patch service stable-kube-prometheus-sta-prometheus -n prometheus --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30002}, {"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
-kubectl patch service stable-grafana -n prometheus --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30001},{"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
-
-```
-
-```bash
-kubectl get svc -n prometheus
-
-```
-***Paste URL in Web Browser***
-
-`http://142.44.249.127:30001` Replace ip with your 2nd Server ip
-
-`UserName: admin` `Password: prom-operator`
-
-## Grafana Configration
-We are using Prometheus for kubernetes Cluster Data Source which will provide data to Grafana And We are using Grafana for kubernetes Cluster visualization.
-We are using some steps for K8s Cluster Dashboards.
-
-- Import Dashboard
-  - Click on Top Right + button then click import dashboard
-![import dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-1.png)
-  - Enter 15661 and click on Load for load predefined Dashboard.
-![predefined Dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-2.png)
-- Select Prometheus Data Source and Click on Import
-![Prometheus Data Source](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-3.png)
-- K8s Cluster Dashboard has successfully Loded.
-![K8s Cluster Dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-4.png)
-- We import new Dashboard with same process with id no 3119
-![new Dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-5.png)
-- K8s Cluster Another Dashboard has successfully Loded.
-![Dashboard2](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-6.png)
 ### Let's Jenkins Configure
 ***Paste URL in Web Browser***
 
@@ -714,7 +526,193 @@ https://github.com/jeetu844/Shopping-reactJS-DevOps.git
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-23.png)
 - Click on splunk for check jenkins metrics dashboard
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-24.png)
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-25.png)
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-25.png)## K8s Installation
+K8s Installation on CentOS 7 **(For Master & Node)**
+
+```bash
+setenforce 0
+sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+
+yum install -y kubelet kubeadm kubectl
+systemctl enable kubelet
+systemctl start kubelet
+
+sed -i '/swap/d' /etc/fstab
+swapoff -a
+
+cat <<EOF > /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sudo sysctl --system
+
+rm -rf /etc/containerd/config.toml
+systemctl restart containerd
+
+```
+**For K8s Master Only**
+```bash
+kubeadm init --pod-network-cidr=10.244.0.0/16
+
+mkdir -p $HOME/.kube
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
+
+export KUBECONFIG=/etc/kubernetes/admin.conf
+
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+```
+**For K8s Node Only**
+- Replace this token with original which you get on master Node
+```bash
+kubeadm join 192.168.63.76:6443 --token u09eln.emqgd14u5p4wh2w0 \
+--discovery-token-ca-cert-hash \
+sha256:e5d568e17f8eda67c61b3f2addfcb74edc498a3b880c964b9a8072718a4e18ff
+
+```
+## Argocd Installation
+Argocd Installation on K8s
+```bash
+yum -y install epel-release
+yum -y install jq
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.7/manifests/install.yaml
+kubectl patch service argocd-server -n argocd --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30000}, {"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
+export ARGOCD_SERVER=`kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.nodePort.ingress[0].hostname'`
+export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
+
+```
+***Paste URL in Web Browser***
+
+`https://142.44.249.127:30000` // Replace ip with your 2nd Server ip
+
+`Username = admin`
+- For get Argocd password 
+```bash
+echo $ARGO_PWD
+
+```
+
+## Argocd Configration
+We will import k8s manifest yaml file from git repository (github) so we will use some steps
+- Click on settings logo on Argocd leftbar
+![settings logo](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-1.png)
+- Click on Repositories
+![Repositories](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-2.png)
+- We will connect with github using https protocol so click on click on HTTPS
+![HTTPS](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-3.png)
+- We will copy repository https url from github.
+![repository https url](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-4.png)
+- We will paste this url on Argocd , If your repository is private then you have to fill username/password fields also.
+- After then click on Connect Button
+![Connect](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-5.png)
+- You will get connection successful status.
+- After that click on Apps button which is below of argocd logo in leftbar
+![Apps button](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-6.png)
+- We will create new App so click on new App
+![new App](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-7.png)
+- We will fill general informations -
+  - Application Name: shopping
+  - Project Name: default
+  - Repository URL: Select your github url
+  - Revision: HEAD
+  - Path: ./ (It means your k8s yaml are in rool directory in your repo)
+  - Clister URL: Select "Kubernetes.default.svc"
+  - Namespace: default (Where you want to run your pods)
+- Click on Create Button
+![general informations1](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-8.png)
+![general informations2](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-9.png)
+- Your App have been Successfully created , And your pod has Successfully created on default Namespace.
+- Click on Shopping for Detail view.
+![Successfully created](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-10.png)
+- You can see your all services and pods.
+![services and pods](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-11.png)
+
+***If you want anything to be updated in GitHub's yaml file, your Kubernetes cluster should also be updated at the same time.
+For that we have to use webhook in GitHub***
+- Click on Settings of your github repository.
+![Settings](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-12.png)
+- Click on Webhooks on Github's leftbar.
+![Webhook1](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-13.png)
+- Click on Add webhook.
+![Webkool2](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-14.png)
+- Fill all Details -
+  - Payload Url: Your Argocd URL (2nd Server IP) :30000/api/webhook
+  - Content type: application/json
+  - Secret: you can put anything or leave Blank
+  - SSL Verification: Disable
+- Add webhook
+![Add webhook](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-15.png)
+Now k8s update automatically when repository will update.
+## Prometheus Grafana Installation on K8s
+### Helm Installation
+```bash
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+```
+- See the Helm version
+```bashh
+helm version --client
+
+```
+```bash
+helm repo add stable https://charts.helm.sh/stable
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+```
+```bash
+kubectl create namespace prometheus
+helm install stable prometheus-community/kube-prometheus-stack -n prometheus
+
+```
+
+To make Prometheus and grafana available outside the cluster, use LoadBalancer or NodePort instead of ClusterIP.
+```bash
+kubectl patch service stable-kube-prometheus-sta-prometheus -n prometheus --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30002}, {"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
+kubectl patch service stable-grafana -n prometheus --type='json' -p='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30001},{"op": "replace", "path": "/spec/type", "value": "NodePort"}]'
+
+```
+
+```bash
+kubectl get svc -n prometheus
+
+```
+***Paste URL in Web Browser***
+
+`http://142.44.249.127:30001` Replace ip with your 2nd Server ip
+
+`UserName: admin` `Password: prom-operator`
+
+## Grafana Configration
+We are using Prometheus for kubernetes Cluster Data Source which will provide data to Grafana And We are using Grafana for kubernetes Cluster visualization.
+We are using some steps for K8s Cluster Dashboards.
+
+- Import Dashboard
+  - Click on Top Right + button then click import dashboard
+![import dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-1.png)
+  - Enter 15661 and click on Load for load predefined Dashboard.
+![predefined Dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-2.png)
+- Select Prometheus Data Source and Click on Import
+![Prometheus Data Source](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-3.png)
+- K8s Cluster Dashboard has successfully Loded.
+![K8s Cluster Dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-4.png)
+- We import new Dashboard with same process with id no 3119
+![new Dashboard](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-5.png)
+- K8s Cluster Another Dashboard has successfully Loded.
+![Dashboard2](https://raw.githubusercontent.com/jeetu844/screenShots/main/grafana/step-6.png)
 ## Authors
 
 - [@Jitendra Sharma](https://www.linkedin.com/in/jitendra-kumar-sharma-0b662751/)
