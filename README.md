@@ -1,7 +1,7 @@
 
 # Shopping App with DevSecOps
 
-In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s, Argocd, Gmail, Slack, Splunk, Prometheus, Grafana
+In this project we are using : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s, Argocd, Gmail, Slack, Splunk, Prometheus, Grafana
 
 
 ![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/Jenkins_pipeline.png)
