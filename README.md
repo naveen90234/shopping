@@ -4,7 +4,7 @@
 In this project we are using : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s, Argocd, Gmail, Slack, Splunk, Prometheus, Grafana
 
 
-![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/Jenkins_pipeline.png)
+![App Screenshot](https://raw.githubusercontent.com/jeetu844/screenShots/main/Shopping-reactJS-DevOps/Jenkins_pipeline.jpg)
 ### In this project we are using 3 servers which OS is CentOS 7
 - **1st Server** (142.44.249.117)
   - [Jenkins](https://github.com/jeetu844/Shopping-reactJS-DevOps#jenkins-installation)
