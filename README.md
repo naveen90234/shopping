@@ -1,76 +1,4 @@
 
-## Jenkins Pipeline
-We have integrated all tool with Jenkins, So now we start jenkins pipeline.
-- Click on `New Item`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-1.png)
-- Enter your project name , in mycase i entered `Shopping`
-- Click on `Pipeline`
-- Click on `OK`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-2.png)
-- Check-mark on `Discard old buids`
-- Enter any number in `Max # of builds to keep`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-3.png)
-- Now checkmark on `This project is parameterized` then select `String Parameter`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-4.png)
-- Now we will set Patameters - 
-  - Name: `GithubUser` (This is key , Don't change it)
-    - Default Value: `jeetu844` (This is my github username, Please enter your github username)
-    - Check mark `Trim the string`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-5.png)
-  - Name: `GithubRepo` (This is key , Don't change it)
-    - Default Value: `Shopping-reactJS-manifest` (Please enter your Repository name which you have created for manifest)
-    - Check mark `Trim the string`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-6.png)
-  - Name: `DockerUser` (This is key , Don't change it)
-    - Default Value: `jeetu844` (Please enter your Dockerhub username)
-    - Check mark `Trim the string`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-7.png)
-  - Name: `DockerRepo` (This is key , Don't change it)
-    - Default Value: `shopping` (Please enter your Dockerhub repository name)
-    - Check mark `Trim the string`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-8.png)
-  - Name: `MyName` (This is key , Don't change it)
-    - Default Value: `Jitendra Sharma` (Please Enter your Name)
-    - Check mark `Trim the string`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-9.png)
-  - Name: `MyEmail` (This is key , Don't change it)
-    - Default Value: `jeetu.844@gmail.com` (Please Enter your Email Address)
-    - Check mark `Trim the string`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-10.png)
-- In Pipeline section select `Pipeline script from SCM`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-11.png)
-- Copy this: 
-```bash
-https://github.com/jeetu844/Shopping-reactJS-DevOps.git
-```
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-12.png)
-- Select `Git` in SCM
-- Paste this in `Repository URL`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-13.png)
-- Enter `./main` in Branch Specifier
-- Click on Save button
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-14.png)
-- Click on `Build with Parameters`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-15.png)
-- Click on `Build` button
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-16.png)
-- Process will be start , it will take some time , Ater complete all stages you can its all details.
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-17.png)
-- You can check all stages full Process.
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-18.png)
-- You can check code quality in sonarqube.
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-19.png)
-- You can check Dependencies Result
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-20.png)
-- In your dockerhub account docker images has uploded
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-21.png)
-- In github manifest repository k8s yml file has updated.
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-22.png)
-- Click on deployment.yml and ckeck image version has changed according to jenkins build number
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-23.png)
-- Click on splunk for check jenkins metrics dashboard
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-24.png)
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-25.png)
 # Shopping App with DevSecOps
 
 In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s And Argocd
@@ -715,6 +643,78 @@ sudo /opt/splunk/bin/splunk start
 - Now click on `Rstart Splunk`
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/splunk/step-29.png)
 
+## Jenkins Pipeline
+We have integrated all tool with Jenkins, So now we start jenkins pipeline.
+- Click on `New Item`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-1.png)
+- Enter your project name , in mycase i entered `Shopping`
+- Click on `Pipeline`
+- Click on `OK`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-2.png)
+- Check-mark on `Discard old buids`
+- Enter any number in `Max # of builds to keep`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-3.png)
+- Now checkmark on `This project is parameterized` then select `String Parameter`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-4.png)
+- Now we will set Patameters - 
+  - Name: `GithubUser` (This is key , Don't change it)
+    - Default Value: `jeetu844` (This is my github username, Please enter your github username)
+    - Check mark `Trim the string`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-5.png)
+  - Name: `GithubRepo` (This is key , Don't change it)
+    - Default Value: `Shopping-reactJS-manifest` (Please enter your Repository name which you have created for manifest)
+    - Check mark `Trim the string`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-6.png)
+  - Name: `DockerUser` (This is key , Don't change it)
+    - Default Value: `jeetu844` (Please enter your Dockerhub username)
+    - Check mark `Trim the string`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-7.png)
+  - Name: `DockerRepo` (This is key , Don't change it)
+    - Default Value: `shopping` (Please enter your Dockerhub repository name)
+    - Check mark `Trim the string`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-8.png)
+  - Name: `MyName` (This is key , Don't change it)
+    - Default Value: `Jitendra Sharma` (Please Enter your Name)
+    - Check mark `Trim the string`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-9.png)
+  - Name: `MyEmail` (This is key , Don't change it)
+    - Default Value: `jeetu.844@gmail.com` (Please Enter your Email Address)
+    - Check mark `Trim the string`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-10.png)
+- In Pipeline section select `Pipeline script from SCM`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-11.png)
+- Copy this: 
+```bash
+https://github.com/jeetu844/Shopping-reactJS-DevOps.git
+```
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-12.png)
+- Select `Git` in SCM
+- Paste this in `Repository URL`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-13.png)
+- Enter `./main` in Branch Specifier
+- Click on Save button
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-14.png)
+- Click on `Build with Parameters`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-15.png)
+- Click on `Build` button
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-16.png)
+- Process will be start , it will take some time , Ater complete all stages you can its all details.
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-17.png)
+- You can check all stages full Process.
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-18.png)
+- You can check code quality in sonarqube.
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-19.png)
+- You can check Dependencies Result
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-20.png)
+- In your dockerhub account docker images has uploded
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-21.png)
+- In github manifest repository k8s yml file has updated.
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-22.png)
+- Click on deployment.yml and ckeck image version has changed according to jenkins build number
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-23.png)
+- Click on splunk for check jenkins metrics dashboard
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-24.png)
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-25.png)
 ## Authors
 
 - [@Jitendra Sharma](https://www.linkedin.com/in/jitendra-kumar-sharma-0b662751/)
