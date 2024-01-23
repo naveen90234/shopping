@@ -317,7 +317,7 @@ Goto Manage Jenkins -> Tools
 - Secret: Paste you github token
 - ID: github-token (this name will use in jenkins pipeline)
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gitHub/step-14.png)
-## Gmail Jenkins Integration
+## Gmail App Token
 We will send email of Jenkins pipeline's Result, So we are using Gmail SMTP
 We have to create gmail app password 1st, using some steps we will create gmail app password.
 - Click on top right side image in gmail account then click on "Manage your google account"
@@ -328,6 +328,7 @@ We have to create gmail app password 1st, using some steps we will create gmail 
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-3.png)
 - You will get a password , **Copy this password.**
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-4.jpg)
+#### Gmail Jenkins Integration
 - Open your Jenkins , Goto `Manage Jenkins` -> `Credentials` than click on `(global)`
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-5.png)
 - Click on `Add Credentials`
