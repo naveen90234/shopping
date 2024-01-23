@@ -265,7 +265,7 @@ Goto Manage Jenkins -> Tools
 ![DockerHub](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-1.png)
 ![repository](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-2.png)
 
-**DockerHub Integration with Jenkins**
+#### DockerHub Integration with Jenkins
 - Open Jenkins -> Goto Manage jenkins -> Credentials
 - Click on (global)
 ![global](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-3.png)
