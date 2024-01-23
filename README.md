@@ -33,7 +33,7 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 - Step7: [Prometheus Grafana Installation on K8s](https://github.com/jeetu844/Shopping-reactJS-DevOps#prometheus-grafana-installation-on-k8s)
 ## Configuration Steps
 #### Jenkins Configuration
-- [Jenkins Login](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#lets-jenkins-configuration)
+- [Jenkins Login](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#lets-jenkins-configure)
 - [Jenkins plugins installations](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#jenkins-plugins-installations)
 - [Tools Configuration](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#jenkins-tools-installations)
 #### SonarQube Configuration
