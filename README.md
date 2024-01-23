@@ -672,6 +672,13 @@ For that we have to use webhook in GitHub***
 - Add webhook
 ![Add webhook](https://raw.githubusercontent.com/jeetu844/screenShots/main/Argocd/step-15.png)
 Now k8s update automatically when repository will update.
+
+**Now Website is running successfully**
+```bash
+<Your k8s public ip :30007>
+```
+In mycase my url is - `http://142.44.249.127:30007`
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-26.png)
 ## Prometheus Grafana Installation on K8s
 ### Helm Installation
 ```bash
