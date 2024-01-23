@@ -13,7 +13,7 @@ In this project we are using : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8
   - [Trivy](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#trivy-installation)
 - **2nd Server** (142.44.249.127)
   - [Docker](https://github.com/jeetu844/Shopping-reactJS-DevOps#docker-installation)
-  - [Kubernetes Master](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#k8s-installation)
+  - [Kubernetes Master](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#k8s-installation-on-centos-7-for-master--node)
   - [Argocd](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#argocd-installation)
   - [Helm](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#prometheus-grafana-installation-on-k8s)
   - [Prometheus](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#prometheus-grafana-installation-on-k8s)
