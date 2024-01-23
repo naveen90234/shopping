@@ -678,7 +678,7 @@ Now k8s update automatically when repository will update.
 <Your k8s public ip :30007>
 ```
 In mycase my url is - `http://142.44.249.127:30007`
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-26.png)
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-27.png)
 ## Prometheus Grafana Installation on K8s
 ### Helm Installation
 ```bash
