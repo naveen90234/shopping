@@ -49,8 +49,8 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 - [Create Repository for K8s Manifest](https://github.com/jeetu844/Shopping-reactJS-DevOps#create-new-repository-for-k8s-manifest)
 - [Github Jenkins Integrations](https://github.com/jeetu844/Shopping-reactJS-DevOps#add-github-token-in-jenkins)
 #### Gmail
-- [Create gmail app token](https://github.com/jeetu844/Shopping-reactJS-DevOps#gmail-jenkins-integration)
-- [Gmail Jenkins Integration](https://github.com/jeetu844/Shopping-reactJS-DevOps#gmail-jenkins-integration-1)
+- [Create gmail app token](https://github.com/jeetu844/Shopping-reactJS-DevOps#gmail-app-token)
+- [Gmail Jenkins Integration](https://github.com/jeetu844/Shopping-reactJS-DevOps#gmail-jenkins-integration)
 #### Slack
 - [Slack Jenkins Integration](https://github.com/jeetu844/Shopping-reactJS-DevOps#slack-jenkins-integration)
 #### Splunk
