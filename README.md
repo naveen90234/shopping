@@ -41,6 +41,22 @@ In this project we will use : Git, Github, Jenkins, SonarQube, Trivy, Owasp, K8s
 - [Create Webhook](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#create-sonarqube-webhook)
 - [Jenkins Sonaqube Integration](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#jenkins-sonaqube-integration)
 - [Sonarqube ReactJS Project](https://github.com/jeetu844/Shopping-reactJS-DevOps?tab=readme-ov-file#reactjs-sonaqube-project)
+#### DockerHub
+- [Create Repository](https://github.com/jeetu844/Shopping-reactJS-DevOps#dockerhub-configration)
+- [DockerHub Integration with Jenkins](https://github.com/jeetu844/Shopping-reactJS-DevOps#dockerhub-integration-with-jenkins)
+#### Github
+- [Create Github Token](https://github.com/jeetu844/Shopping-reactJS-DevOps#github-configration)
+- [Create Repository for K8s Manifest](https://github.com/jeetu844/Shopping-reactJS-DevOps#create-new-repository-for-k8s-manifest)
+- [Github Jenkins Integrations](https://github.com/jeetu844/Shopping-reactJS-DevOps#add-github-token-in-jenkins)
+#### Gmail
+- [Create gmail app token](https://github.com/jeetu844/Shopping-reactJS-DevOps#gmail-jenkins-integration)
+- [Gmail Jenkins Integration](https://github.com/jeetu844/Shopping-reactJS-DevOps#gmail-jenkins-integration-1)
+#### Slack
+- [Slack Jenkins Integration](https://github.com/jeetu844/Shopping-reactJS-DevOps#slack-jenkins-integration)
+#### Splunk
+- [Splunk Jenkins Integration](https://github.com/jeetu844/Shopping-reactJS-DevOps#splunk-jenkins-integration)
+
+## [Jenkins Project Using Pipeline](https://github.com/jeetu844/Shopping-reactJS-DevOps#jenkins-pipeline)
 
 ## Jenkins Installation
 
@@ -249,7 +265,7 @@ Goto Manage Jenkins -> Tools
 ![DockerHub](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-1.png)
 ![repository](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-2.png)
 
-#### DockerHub Integration with Jenkins
+**DockerHub Integration with Jenkins**
 - Open Jenkins -> Goto Manage jenkins -> Credentials
 - Click on (global)
 ![global](https://raw.githubusercontent.com/jeetu844/screenShots/main/dockerHub/step-3.png)
@@ -312,7 +328,6 @@ We have to create gmail app password 1st, using some steps we will create gmail 
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-3.png)
 - You will get a password , **Copy this password.**
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-4.jpg)
-#### Gmail Jenkins Integration
 - Open your Jenkins , Goto `Manage Jenkins` -> `Credentials` than click on `(global)`
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/gmail/step-5.png)
 - Click on `Add Credentials`
@@ -527,8 +542,7 @@ https://github.com/jeetu844/Shopping-reactJS-DevOps.git
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-23.png)
 - Click on splunk for check jenkins metrics dashboard
 ![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-24.png)
-![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-25.png)## K8s Installation
-K8s Installation on CentOS 7 **(For Master & Node)**
+![](https://raw.githubusercontent.com/jeetu844/screenShots/main/Jenkins/Shopping-reactJS-DevOps/step-25.png)## K8s Installation on CentOS 7 **(For Master & Node)**
 
 ```bash
 setenforce 0
