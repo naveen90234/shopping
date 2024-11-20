@@ -53,17 +53,17 @@ pipeline {
             steps{
                 script{
                     withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
-                    sh '''
-                        docker build -t $DockerRepo:$Version .
-                        docker tag $DockerRepo:$Version $DockerUser/$DockerRepo:$Version
-                        docker tag $DockerRepo:$Version $DockerUser/$DockerRepo:latest
-                        docker push $DockerUser/$DockerRepo:$Version
-                        docker push $DockerUser/$DockerRepo:latest
-                    '''
+                        sh '''
+                            docker build -t $DockerUser/$DockerRepo:$Version .
+                            docker tag $DockerUser/$DockerRepo:$Version $DockerUser/$DockerRepo:latest
+                            docker push $DockerUser/$DockerRepo:$Version
+                            docker push $DockerUser/$DockerRepo:latest
+                        '''
                     }
                 }
             }
         }
+
         stage('Trivy Image Scan'){
             steps{
                 sh 'trivy image $DockerRepo:$Version > trivyimage.txt'
