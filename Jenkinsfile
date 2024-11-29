@@ -66,7 +66,7 @@ pipeline {
 
         stage('Trivy Image Scan'){
             steps{
-                sh 'trivy image $DockerRepo:$Version > trivyimage.txt'
+                sh 'trivy image $DockerUser/$DockerRepo:$Version > trivyimage.txt'
             }
         }
         stage('Manifest Pull'){
