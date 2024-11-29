@@ -71,7 +71,7 @@ pipeline {
         }
         stage('Manifest Pull'){
             steps{
-                git branch: 'main', url: 'https://github.com/jeetu844/Shopping-reactJS-manifest.git'
+                git branch: 'main', url: 'https://github.com/naveen90234/shopping.git'
             }
         }
         stage('Update Manifest'){
