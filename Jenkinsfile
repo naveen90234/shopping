@@ -71,7 +71,7 @@ pipeline {
         }
         stage('Manifest Pull'){
             steps{
-                git branch: 'main', url: 'https://github.com/naveen90234/shopping.git'
+                git branch: 'main', url: 'https://github.com/naveen90234/shopping-manifest.git'
             }
         }
         stage('Update Manifest'){
